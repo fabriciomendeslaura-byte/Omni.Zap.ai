@@ -1,0 +1,685 @@
+[
+  {
+    "parameters": {
+      "tableId": "leads",
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "telefone",
+            "fieldValue": "={{ $('Dados Lead').item.json.Telefone }}"
+          },
+          {
+            "fieldId": "created_at",
+            "fieldValue": "={{ $('Dados Lead').item.json.Criado_em }}"
+          },
+          {
+            "fieldId": "nome",
+            "fieldValue": "={{ $('Dados Lead').item.json.LeadNome }}"
+          },
+          {
+            "fieldId": "user_id",
+            "fieldValue": "={{ $json.user_id }}"
+          },
+          {
+            "fieldId": "origem",
+            "fieldValue": "WhatsApp"
+          },
+          {
+            "fieldId": "ultima_mensagem",
+            "fieldValue": "={{ $now }}"
+          }
+        ]
+      }
+    },
+    "id": "f37dc241-cdf8-4677-8732-23a90c08b921",
+    "name": "Criar Cliente1",
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      4304,
+      1088
+    ],
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    },
+    "notes": "TEMPLATE DESENVOLVIDO POR NOCODE STARTUP\nhttps://nocodestartup.io/\n\nFORMAÇÃO GESTOR DE AGENTES DE IA:\nhttps://nocodestartup.io/formacao-gestor-agentes-ia/"
+  },
+  {
+    "parameters": {
+      "operation": "update",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "telefone",
+            "condition": "eq",
+            "keyValue": "={{ $('Webhook').item.json.body.phone }}"
+          }
+        ]
+      },
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "ultima_mensagem",
+            "fieldValue": "={{ $now }}"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      4224,
+      592
+    ],
+    "id": "95708a7e-b2b4-4988-8338-44331704ca9e",
+    "name": "Update a row",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "update",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "telefone",
+            "condition": "eq",
+            "keyValue": "={{ $json.Telefone }}"
+          }
+        ]
+      },
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "email",
+            "fieldValue": "={{ $('Extrair Email1').item.json.email }}"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      -288,
+      576
+    ],
+    "id": "26a5d705-5ae4-4974-9b5f-16520472d37b",
+    "name": "Update a row1",
+    "alwaysOutputData": true,
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "httpMethod": "POST",
+      "path": "whebhook omni.ai",
+      "options": {}
+    },
+    "type": "n8n-nodes-base.webhook",
+    "typeVersion": 2,
+    "position": [
+      -2048,
+      784
+    ],
+    "id": "52584a44-c9ae-427e-a717-d88ecce728c8",
+    "name": "Webhook",
+    "webhookId": "9e8914c2-44b6-4d3c-acf0-58c5ef11bb97"
+  },
+  {
+    "parameters": {
+      "operation": "get",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "id",
+            "keyValue": "={{ $json.id }}"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      5072,
+      1312
+    ],
+    "id": "4369d4df-2454-4a2f-934f-f37bda5b8294",
+    "name": "PEGAR_DADOS1",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "update",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "telefone",
+            "condition": "eq",
+            "keyValue": "={{ $json.telefone }}"
+          },
+          {
+            "keyName": "nome",
+            "condition": "eq",
+            "keyValue": "={{ $json.nome }}"
+          }
+        ]
+      },
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "status",
+            "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', `atualizar etapa_pipeline do lead :\n- em_atendimento \n- reuniao_marcada`, 'string') }}"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      5264,
+      1312
+    ],
+    "id": "d87993c9-8626-46d0-a6d3-7ee9ef8d7d4b",
+    "name": "ATUALIZAR_LEAD_CRM",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "tableId": "appointments",
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "summary",
+            "fieldValue": "={{ $fromAI(\"summary_reuniao\") }}\n"
+          },
+          {
+            "fieldId": "description",
+            "fieldValue": "={{ $fromAI(\"descricao_reuniao\") }}\n"
+          },
+          {
+            "fieldId": "start_time",
+            "fieldValue": "={{ $fromAI(\"inicio_reuniao\") }}\n"
+          },
+          {
+            "fieldId": "end_time",
+            "fieldValue": "={{ $fromAI(\"fim_reuniao\") }}\n"
+          },
+          {
+            "fieldId": "meeting_link",
+            "fieldValue": "={{ $fromAI(\"link_google_meet\") }}\n"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      5456,
+      1312
+    ],
+    "id": "2c082cfe-bb67-4994-a9b9-248d4ba10186",
+    "name": "CRIAR_REUNIAO_CRM",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "get",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "telefone",
+            "keyValue": "={{ $('Dados Lead').item.json.Telefone }}"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      3760,
+      752
+    ],
+    "id": "88d18b1e-39ae-4e55-a64e-425f346de5b6",
+    "name": "Get a row",
+    "alwaysOutputData": true,
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "jsCode": "// Pega o body do webhook\nconst body = $json.body;\n\n// 1️⃣ Bloqueia apenas mensagens enviadas pelo próprio agente\nif (body.fromMe === true) {\n  return [];\n}\n\n// 2️⃣ Identifica tipo da mensagem\nlet mensagemLead = null;\nlet tipoMensagem = null;\n\nif (body.text && body.text.message) {\n  tipoMensagem = \"texto\";\n  mensagemLead = body.text.message;\n} \nelse if (body.audio) {\n  tipoMensagem = \"audio\";\n  mensagemLead = body.audio;\n}\nelse if (body.image) {\n  tipoMensagem = \"imagem\";\n  mensagemLead = body.image;\n}\nelse if (body.document) {\n  tipoMensagem = \"documento\";\n  mensagemLead = body.document;\n}\nelse {\n  // Se não for nenhum desses, ainda deixa passar\n  tipoMensagem = \"outro\";\n  mensagemLead = body;\n}\n\n// 3️⃣ Retorna mantendo sua estrutura original\nreturn [\n  {\n    json: {\n      ...$json,\n      tipoMensagem,\n      mensagemLead,\n      telefoneLead: body.phone,\n      messageId: body.messageId\n    }\n  }\n];"
+    },
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+      -1872,
+      784
+    ],
+    "id": "3daefc23-c135-4c14-9e5a-9f5afc9f7f53",
+    "name": "Code in JavaScript"
+  },
+  {
+    "parameters": {
+      "jsCode": "return [\n  {\n    json: {\n      debugCompleto: $json\n    }\n  }\n];"
+    },
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+      2160,
+      768
+    ],
+    "id": "c602916a-26cc-408d-b772-b3f32aff074a",
+    "name": "MENSAGEN OFICIAL PARA O AGENTE"
+  },
+  {
+    "parameters": {
+      "operation": "delete",
+      "tableId": "appointments",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "user_id",
+            "condition": "eq",
+            "keyValue": "={{ $json.user_id }}"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      5648,
+      1312
+    ],
+    "id": "3d68e089-cfd6-435d-b008-d158c02d5d10",
+    "name": "EXCLUIR_REUNIÃO_CRM",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "tableId": "leads",
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "status",
+            "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+          },
+          {
+            "fieldId": "next_followup_at",
+            "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+          },
+          {
+            "fieldId": "followup_count"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      4880,
+      1312
+    ],
+    "id": "9e9fb715-de63-4b0f-a02d-224b6da6ae68",
+    "name": "'ATUALIZACÃO_PROSPECT_CRM",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "httpMethod": "POST",
+      "path": "followup-omnizap",
+      "options": {}
+    },
+    "type": "n8n-nodes-base.webhook",
+    "typeVersion": 1,
+    "position": [
+      -1968,
+      2640
+    ],
+    "id": "6adf01d1-1aa5-4266-8992-363c5eb152e9",
+    "name": "Webhook - Gatilho Follow-Up",
+    "webhookId": "ba30e9e5-72d7-48b3-9983-b720eb59e638"
+  },
+  {
+    "parameters": {
+      "operation": "getAll",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "etapa_pipeline",
+            "condition": "eq",
+            "keyValue": "em_atendimento"
+          },
+          {
+            "keyName": "etapa_pipeline",
+            "condition": "eq",
+            "keyValue": "novo_lead"
+          },
+          {
+            "keyName": "follow_up",
+            "condition": "eq",
+            "keyValue": "follow_up2"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      -1312,
+      2640
+    ],
+    "id": "73d3d538-969a-4c7f-8bf2-9c7e5be94a02",
+    "name": "Supabase",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "update",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "telefone",
+            "condition": "eq",
+            "keyValue": "={{ $('Supabase').item.json.telefone }}"
+          }
+        ]
+      },
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "follow_up",
+            "fieldValue": "=follow_up1"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      784,
+      1984
+    ],
+    "id": "e9be3058-9d56-4f6f-ac59-912f0de59245",
+    "name": "Atualizar_Lead",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "update",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "telefone",
+            "condition": "eq",
+            "keyValue": "={{ $('Supabase').item.json.telefone }}"
+          }
+        ]
+      },
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "follow_up",
+            "fieldValue": "follow_up2"
+          },
+          {
+            "fieldId": "etapa_pipeline",
+            "fieldValue": "follow_up"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      592,
+      2656
+    ],
+    "id": "38025255-5d3a-46a5-b588-e382567e601e",
+    "name": "Atualizar_Lead1",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "update",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "telefone",
+            "condition": "eq",
+            "keyValue": "={{ $('Supabase').item.json.telefone }}"
+          }
+        ]
+      },
+      "fieldsUi": {
+        "fieldValues": [
+          {
+            "fieldId": "follow_up",
+            "fieldValue": "follow_up3"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      800,
+      3264
+    ],
+    "id": "5781fd83-6d4c-4652-936b-c760f30db914",
+    "name": "Atualizar_Lead2",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "getAll",
+      "tableId": "leads"
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      -16,
+      2192
+    ],
+    "id": "82e2d440-6b47-4389-9395-8daf6bd7ac60",
+    "name": "pegar_dados_lead",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "getAll",
+      "tableId": "leads"
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      96,
+      2864
+    ],
+    "id": "38625481-894b-4263-95f6-d7d12da4db38",
+    "name": "pegar_dados_lead1",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "getAll",
+      "tableId": "leads",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "etapa_pipeline",
+            "condition": "eq",
+            "keyValue": "follow_up"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      -480,
+      3264
+    ],
+    "id": "ded9b90b-a196-48c0-81ea-4a13276fbd31",
+    "name": "Supabase1",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "operation": "getAll",
+      "tableId": "leads"
+    },
+    "type": "n8n-nodes-base.supabaseTool",
+    "typeVersion": 1,
+    "position": [
+      64,
+      3472
+    ],
+    "id": "dd7f81e3-5440-45c8-91fc-a90107c6c932",
+    "name": "pegar_dados_lead2",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  },
+  {
+    "parameters": {
+      "jsCode": "const resultado = [];\n\nfor (const item of items) {\n  \n  const followUp = item.json.follow_up;\n  const ultimaMensagem = item.json.ultima_mensagem;\n\n  if (!ultimaMensagem) {\n    continue; // evita erro se vier null\n  }\n\n  const agora = new Date();\n  const ultima = new Date(ultimaMensagem);\n\n  const diferencaHoras = (agora - ultima) / (1000 * 60 * 60);\n\n  if (followUp === \"follow_up2\" && diferencaHoras >= 24) {\n    resultado.push(item);\n  }\n}\n\nreturn resultado;"
+    },
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+      -272,
+      3264
+    ],
+    "id": "421f62db-7370-4579-9f45-1390f72fcb4f",
+    "name": "Code in JavaScript1"
+  },
+  {
+    "parameters": {
+      "jsCode": "const agora = new Date();\n\n// Ajusta pro fuso do Brasil (importante se teu n8n estiver em servidor gringo)\nconst horaBrasil = new Date(\n  agora.toLocaleString(\"en-US\", { timeZone: \"America/Sao_Paulo\" })\n).getHours();\n\n// Define o horário comercial\nconst inicio = 8;  // 08:00\nconst fim = 19;    // 19:00\n\n// Verifica se está dentro do horário\nconst dentroHorario = horaBrasil >= inicio && horaBrasil < fim;\n\n// Se estiver dentro do horário, deixa passar\nif (dentroHorario) {\n  return items.map(item => {\n    return {\n      json: {\n        ...item.json,\n        dentroHorario: true,\n        horaAtual: horaBrasil\n      }\n    };\n  });\n}\n\n// Se NÃO estiver, bloqueia o fluxo\nreturn [];"
+    },
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+      -1728,
+      2640
+    ],
+    "id": "87d78d94-d2af-4786-aff1-2f85cfda2fb3",
+    "name": "Code in JavaScript2"
+  },
+  {
+    "parameters": {
+      "operation": "get",
+      "tableId": "whatsapp_connections",
+      "filters": {
+        "conditions": [
+          {
+            "keyName": "numero",
+            "keyValue": "={{ $('Webhook').item.json.body.connectedPhone }}"
+          }
+        ]
+      }
+    },
+    "type": "n8n-nodes-base.supabase",
+    "typeVersion": 1,
+    "position": [
+      4128,
+      1088
+    ],
+    "id": "c1f7adea-f894-473f-9733-cf7bb779084a",
+    "name": "Get a row1",
+    "credentials": {
+      "supabaseApi": {
+        "id": "08McCiYnqbejcODw",
+        "name": "OmniZap.AI"
+      }
+    }
+  }
+]

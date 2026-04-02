@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #FF2E88;
+  --color-primary-foreground: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-foreground: #0A0A0A;
+  --color-muted: #F5F5F5;
+  --color-muted-foreground: #737373;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0A0A0A;
+  --color-border: #E5E5E5;
+  --color-input: #E5E5E5;
+  --color-ring: #FF2E88;
+
+  --color-dark-background: #0A0A0A;
+  --color-dark-foreground: #FFFFFF;
+  --color-dark-card: #1A1A1A;
+  --color-dark-muted: #262626;
+  --color-dark-muted-foreground: #A3A3A3;
+  --color-dark-border: #262626;
+  --color-dark-input: #262626;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+.dark {
+  --color-background: var(--color-dark-background);
+  --color-foreground: var(--color-dark-foreground);
+  --color-card: var(--color-dark-card);
+  --color-card-foreground: var(--color-dark-foreground);
+  --color-muted: var(--color-dark-muted);
+  --color-muted-foreground: var(--color-dark-muted-foreground);
+  --color-border: var(--color-dark-border);
+  --color-input: var(--color-dark-input);
+}
+
+/* Custom Scrollbar for Dark Theme */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Kanban Column Scrollbar */
+.kanban-column::-webkit-scrollbar {
+  width: 4px;
+}
+.kanban-column::-webkit-scrollbar-track {
+  background: transparent;
+}
+.kanban-column::-webkit-scrollbar-thumb {
+  background: rgba(255, 46, 136, 0.2);
+  border-radius: 2px;
+}

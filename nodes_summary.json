@@ -1,0 +1,466 @@
+[
+  {
+    "name": "Cliente Existe?1",
+    "type": "n8n-nodes-base.if"
+  },
+  {
+    "name": "Criar Cliente1",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "Merge1",
+    "type": "n8n-nodes-base.merge"
+  },
+  {
+    "name": "Filtro Inicial1",
+    "type": "n8n-nodes-base.filter"
+  },
+  {
+    "name": "Dados Lead",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "Sticky Note",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Sticky Note1",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Sticky Note18",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "No Operation, do nothing",
+    "type": "n8n-nodes-base.noOp"
+  },
+  {
+    "name": "Parametros Fluxo",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "É INTERVENÇÃO HUMANA",
+    "type": "n8n-nodes-base.if"
+  },
+  {
+    "name": "No Operation, do nothing1",
+    "type": "n8n-nodes-base.noOp"
+  },
+  {
+    "name": "DESATIVA AGENTE",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Chat Memory Manager",
+    "type": "@n8n/n8n-nodes-langchain.memoryManager"
+  },
+  {
+    "name": "Chat Memory Manager1",
+    "type": "@n8n/n8n-nodes-langchain.memoryManager"
+  },
+  {
+    "name": "Update a row",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "Extrair Email1",
+    "type": "n8n-nodes-base.function"
+  },
+  {
+    "name": "IF - Tem Email?",
+    "type": "n8n-nodes-base.if"
+  },
+  {
+    "name": "Update a row1",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "Postgres Chat Memory4",
+    "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat"
+  },
+  {
+    "name": "Postgres Chat Memory5",
+    "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat"
+  },
+  {
+    "name": "Redis",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Bot Desativado?1",
+    "type": "n8n-nodes-base.if"
+  },
+  {
+    "name": "Webhook",
+    "type": "n8n-nodes-base.webhook"
+  },
+  {
+    "name": "AGENTE LAURA WHATSAPP",
+    "type": "@n8n/n8n-nodes-langchain.agent"
+  },
+  {
+    "name": "PEGAR_DADOS1",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "Split Out1",
+    "type": "n8n-nodes-base.splitOut"
+  },
+  {
+    "name": "Loop Over Items1",
+    "type": "n8n-nodes-base.splitInBatches"
+  },
+  {
+    "name": "Wait3",
+    "type": "n8n-nodes-base.wait"
+  },
+  {
+    "name": "No Operation, do nothing5",
+    "type": "n8n-nodes-base.noOp"
+  },
+  {
+    "name": "Auto-fixing Output Parser1",
+    "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing"
+  },
+  {
+    "name": "OpenAI Chat Model3",
+    "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi"
+  },
+  {
+    "name": "Sticky Note22",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Structured Output Parser [Schema]",
+    "type": "@n8n/n8n-nodes-langchain.outputParserStructured"
+  },
+  {
+    "name": "Basic LLM Chain",
+    "type": "@n8n/n8n-nodes-langchain.chainLlm"
+  },
+  {
+    "name": "DADOS FIXOS DO LEAD1",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "ATUALIZAR_LEAD_CRM",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "OpenRouter Chat Model",
+    "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter"
+  },
+  {
+    "name": "CRIAR_REUNIAO_CRM",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "Sticky Note19",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Switch",
+    "type": "n8n-nodes-base.switch"
+  },
+  {
+    "name": "Sticky Note29",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Add Texto Buffer",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Add Audio Buffer",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Add Error Buffer",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Add PDF Buffer",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Add Imagem Buffer",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Transcrever Áudio",
+    "type": "@n8n/n8n-nodes-langchain.openAi"
+  },
+  {
+    "name": "OpenAI",
+    "type": "@n8n/n8n-nodes-langchain.openAi"
+  },
+  {
+    "name": "Mensagem Texto",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "Mensagem Audio",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "Mensagem Imagem",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "Extract from File1",
+    "type": "n8n-nodes-base.extractFromFile"
+  },
+  {
+    "name": "Mensagem Erro",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "Mensagem Documento PDF1",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "HTTP Request2",
+    "type": "n8n-nodes-base.httpRequest"
+  },
+  {
+    "name": "HTTP Request3",
+    "type": "n8n-nodes-base.httpRequest"
+  },
+  {
+    "name": "ENVIAR MENSAGEM Z-API1",
+    "type": "n8n-nodes-base.httpRequest"
+  },
+  {
+    "name": "Sticky Note10",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Wait2",
+    "type": "n8n-nodes-base.wait"
+  },
+  {
+    "name": "ComparandoMensagens",
+    "type": "n8n-nodes-base.if"
+  },
+  {
+    "name": "Mensagem",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "Buffer 1",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Buffer 4",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "Apagar Buffer",
+    "type": "n8n-nodes-base.redis"
+  },
+  {
+    "name": "No Operation, do nothing8",
+    "type": "n8n-nodes-base.noOp"
+  },
+  {
+    "name": "Get a row",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "Remove Duplicates",
+    "type": "n8n-nodes-base.removeDuplicates"
+  },
+  {
+    "name": "Limit",
+    "type": "n8n-nodes-base.limit"
+  },
+  {
+    "name": "Limit1",
+    "type": "n8n-nodes-base.limit"
+  },
+  {
+    "name": "Code in JavaScript",
+    "type": "n8n-nodes-base.code"
+  },
+  {
+    "name": "MENSAGEN OFICIAL PARA O AGENTE",
+    "type": "n8n-nodes-base.code"
+  },
+  {
+    "name": "EXCLUIR_REUNIÃO_CRM",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "Postgres Chat Memory",
+    "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat"
+  },
+  {
+    "name": "'ATUALIZACÃO_PROSPECT_CRM",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "DESATIVAR AGENTE",
+    "type": "n8n-nodes-base.redisTool"
+  },
+  {
+    "name": "Sticky Note2",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Webhook - Gatilho Follow-Up",
+    "type": "n8n-nodes-base.webhook"
+  },
+  {
+    "name": "Padronizacao",
+    "type": "n8n-nodes-base.set"
+  },
+  {
+    "name": "Supabase",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "Filter",
+    "type": "n8n-nodes-base.filter"
+  },
+  {
+    "name": "Sticky Note21",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Atualizar_Lead",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "Filter1",
+    "type": "n8n-nodes-base.filter"
+  },
+  {
+    "name": "AI Agent",
+    "type": "@n8n/n8n-nodes-langchain.agent"
+  },
+  {
+    "name": "Postgres Chat Memory1",
+    "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat"
+  },
+  {
+    "name": "Sticky Note23",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Atualizar_Lead1",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "Atualizar_Lead2",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "AGENTE LAURA",
+    "type": "@n8n/n8n-nodes-langchain.agent"
+  },
+  {
+    "name": "pegar_dados_lead",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "pegar_dados_lead1",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "Supabase1",
+    "type": "n8n-nodes-base.supabase"
+  },
+  {
+    "name": "ENVIAR MENSAGEM Z-API",
+    "type": "n8n-nodes-base.httpRequest"
+  },
+  {
+    "name": "OpenRouter Chat Model1",
+    "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter"
+  },
+  {
+    "name": "Loop Over Items",
+    "type": "n8n-nodes-base.splitInBatches"
+  },
+  {
+    "name": "Merge",
+    "type": "n8n-nodes-base.merge"
+  },
+  {
+    "name": "Wait",
+    "type": "n8n-nodes-base.wait"
+  },
+  {
+    "name": "Sticky Note24",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "AGENTE LAURA1",
+    "type": "@n8n/n8n-nodes-langchain.agent"
+  },
+  {
+    "name": "Postgres Chat Memory2",
+    "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat"
+  },
+  {
+    "name": "pegar_dados_lead2",
+    "type": "n8n-nodes-base.supabaseTool"
+  },
+  {
+    "name": "ENVIAR MENSAGEM Z-API2",
+    "type": "n8n-nodes-base.httpRequest"
+  },
+  {
+    "name": "Sticky Note4",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "OpenRouter Chat Model2",
+    "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter"
+  },
+  {
+    "name": "Code in JavaScript1",
+    "type": "n8n-nodes-base.code"
+  },
+  {
+    "name": "Sticky Note3",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Code in JavaScript2",
+    "type": "n8n-nodes-base.code"
+  },
+  {
+    "name": "Sticky Note25",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Sticky Note5",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Sticky Note6",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Sticky Note7",
+    "type": "n8n-nodes-base.stickyNote"
+  },
+  {
+    "name": "Postgres Chat Memory3",
+    "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat"
+  },
+  {
+    "name": "ENVIAR MENSAGEM Z-API3",
+    "type": "n8n-nodes-base.httpRequest"
+  },
+  {
+    "name": "OpenRouter Chat Model3",
+    "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter"
+  },
+  {
+    "name": "Get a row1",
+    "type": "n8n-nodes-base.supabase"
+  }
+]
