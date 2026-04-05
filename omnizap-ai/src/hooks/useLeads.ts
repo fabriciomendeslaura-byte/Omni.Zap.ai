@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { Lead } from '../types';
+import { Lead, LeadStatus } from '../types';
 
 export function useLeads(userId: string | undefined) {
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -45,13 +45,17 @@ export function useLeads(userId: string | undefined) {
     };
   }, [userId]);
 
-  const updateLeadStatus = async (id: string, status: Lead['status']) => {
+  /**
+   * Updates lead status. Returns true on success, false on failure.
+   * The caller is responsible for optimistic updates and rollback.
+   */
+  const updateLeadStatus = async (id: string, status: LeadStatus): Promise<boolean> => {
     try {
       const { error } = await supabase
         .from('leads')
-        .update({ status })
+        .update({ status, ultima_atividade: new Date().toISOString() })
         .eq('id', id);
-      
+
       if (error) throw error;
       return true;
     } catch (error) {
@@ -68,7 +72,7 @@ export function useLeads(userId: string | undefined) {
         .insert([{ ...leadData, user_id: userId }])
         .select()
         .single();
-      
+
       if (error) throw error;
       return data;
     } catch (error) {

@@ -28,7 +28,9 @@ export default function ConversationsPage() {
   const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
   const selectedChat = useMemo(() => conversations.find(c => c.lead_id === selectedChatId) || null, [conversations, selectedChatId]);
   
-  const { messages, loading: messagesLoading, sendMessage } = useChatMessages(selectedChat?.lead_id);
+  // Usa session_id do N8N se disponível, senão usa lead_id como fallback
+  const chatKey = selectedChat?.session_id || selectedChat?.lead_id;
+  const { messages, loading: messagesLoading, sendMessage } = useChatMessages(chatKey);
 
   const [newMessage, setNewMessage] = useState('');
   const [searchQuery, setSearchQuery] = useState('');

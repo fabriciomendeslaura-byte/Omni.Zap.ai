@@ -10,7 +10,15 @@ export type User = {
   objetivo?: string;
 };
 
-export type LeadStatus = 'novo' | 'atendimento' | 'fechado' | 'parado';
+export type LeadStatus =
+  | 'novo_lead'
+  | 'em_atendimento'
+  | 'lead_qualificado'
+  | 'reuniao_marcada'
+  | 'humano_na_conversa'
+  | 'fechado'
+  | 'perdido'
+  | 'follow_up';
 
 
 export type Lead = {
@@ -56,6 +64,12 @@ export type Agent = {
   prompt: string;
   ativo: boolean;
   created_at: string;
+  // Campos SaaS multi-tenant + N8N
+  regras?: string[];
+  contexto?: Record<string, unknown>;
+  variaveis?: Record<string, string>;
+  n8n_webhook?: string;
+  max_tokens?: number;
 };
 
 export type Appointment = {

@@ -92,19 +92,14 @@ export default function LandingPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative w-full h-full flex justify-center items-center"
           >
-            <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-full opacity-50"></div>
-            <div className="relative bg-dark-card rounded-[32px] border border-border shadow-2xl overflow-hidden p-2">
-              <div className="bg-dark-muted h-8 flex items-center px-4 gap-1.5 rounded-t-2xl">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-              </div>
+            <div className="absolute -inset-4 bg-primary/20 blur-3xl opacity-50"></div>
+            <div className="relative w-full border border-border shadow-2xl bg-white">
               <img 
-                src="/dashboard.jpeg" 
+                src="/DASHBOARD_FINAL.png" 
                 alt="OmniZap Dashboard" 
-                className="w-full h-auto rounded-b-2xl shadow-inner object-cover"
+                className="w-full h-auto object-contain shadow-inner"
               />
             </div>
           </motion.div>
